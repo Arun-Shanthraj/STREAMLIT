@@ -1,0 +1,14 @@
+[project]
+name = "basic-llm"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "accelerate>=1.13.0",
+    "protobuf>=7.35.0",
+    "sentencepiece>=0.2.1",
+    "streamlit>=1.58.0",
+    "torch>=2.12.0",
+    "transformers>=5.10.2",
+]
