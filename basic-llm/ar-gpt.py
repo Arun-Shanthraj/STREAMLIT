@@ -44,8 +44,8 @@ user_input = st.chat_input("Type a message...")
 
 if user_input:
 
-    # with st.chat_message("user"):
-    #     st.write(user_input)
+    with st.chat_message("user"):
+        st.write(user_input)
 
     st.session_state.messages.append(
         {
