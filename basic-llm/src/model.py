@@ -33,10 +33,5 @@ def load_generator():
 generator, tokenizer = load_generator()
 
 def generate_response(messages):
-    prompt = ""
-    for msg in messages:
-        prompt += f"{msg['role']}: {msg['content']}\n"
-
-    response = generator(prompt)
-
+    response = generator(messages)
     return response[0]["generated_text"]
