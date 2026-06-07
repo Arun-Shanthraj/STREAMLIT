@@ -32,15 +32,11 @@ def load_generator():
 
 generator, tokenizer = load_generator()
 
-def generate_response(prompt):
-    messages = [
-        {"role": "user", "content": prompt}
-    ]
-    formatted_prompt = tokenizer.apply_chat_template(
-        messages,
-        tokenize=False,
-        add_generation_prompt=True
-    )
-    response = generator(formatted_prompt)
+def generate_response(messages):
+    prompt = ""
+    for msg in messages:
+        prompt += f"{msg['role']}: {msg['content']}\n"
+
+    response = generator(prompt)
 
     return response[0]["generated_text"]
