@@ -44,11 +44,9 @@ user_input = st.chat_input("Type a message...")
 
 if user_input:
 
-    # Show user message immediately
     with st.chat_message("user"):
         st.write(user_input)
 
-    # Save user message
     st.session_state.messages.append(
         {
             "role": "user",
@@ -56,22 +54,14 @@ if user_input:
         }
     )
 
-    # Build conversation history
-    conversation = ""
-
-    for msg in st.session_state.messages:
-        conversation += (
-            f"{msg['role']}: {msg['content']}\n"
-        )
-
-    # Generate response
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = model.generate_response(conversation)
+            response = model.generate_response(
+                st.session_state.messages
+            )
 
-        st.success(response)
+        st.markdown(response)
 
-    # Save assistant response
     st.session_state.messages.append(
         {
             "role": "assistant",
